@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MarvelApp</string>
+    <string name="bt_ok">Ok</string>
+    <string name="no_description">That is no description about this character.</string>
+</resources>

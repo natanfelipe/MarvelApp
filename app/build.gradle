@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.br.natanfelipe.marvelapp"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", '"https://gateway.marvel.com:443/v1/public/"'
+            buildConfigField "String", "API_KEY", '"174463b1bff09afd27aed6bbba6c6628"'
+            buildConfigField "String", "HASH", '"f12f007e1cfd427ef48aea106485d6ae"'
+
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "BASE_URL", '"https://gateway.marvel.com:443/v1/public/"'
+            buildConfigField "String", "API_KEY", '"174463b1bff09afd27aed6bbba6c6628"'
+            buildConfigField "String", "HASH", '"f12f007e1cfd427ef48aea106485d6ae"'
+
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //Google's Recyclerview
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    //Google's Cardview
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    //Butterknife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.android.support:design:27.1.1'
+}
