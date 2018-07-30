@@ -3,28 +3,27 @@ package com.br.natanfelipe.marvelapp.presenter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Parcelable;
 import android.provider.Settings;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.widget.Toast;
 
 import com.br.natanfelipe.marvelapp.BuildConfig;
 import com.br.natanfelipe.marvelapp.R;
 import com.br.natanfelipe.marvelapp.connections.RestApiKey;
 import com.br.natanfelipe.marvelapp.contract.HeroesContract;
+import com.br.natanfelipe.marvelapp.gui.adapters.HeroAdapter;
 import com.br.natanfelipe.marvelapp.gui.view.HeroDetailActivity;
 import com.br.natanfelipe.marvelapp.interfaces.ServerResponseConnector;
 import com.br.natanfelipe.marvelapp.model.Characters;
-import com.br.natanfelipe.marvelapp.model.ComicItem;
 import com.br.natanfelipe.marvelapp.model.Comics;
 import com.br.natanfelipe.marvelapp.model.Info;
-import com.br.natanfelipe.marvelapp.model.Thumbnail;
 import com.br.natanfelipe.marvelapp.utils.Constants;
 
 import java.util.ArrayList;
@@ -119,15 +118,16 @@ public class HeroesPresenter implements HeroesContract.presenter, ServerResponse
 
             Comics comics = characters.getComics();
             String thumbnail = characters.getThumbnail().getPath()+"."+characters.getThumbnail().getExtension();
-            Intent intent = new Intent(contexto, HeroDetailActivity.class);
-            intent.putExtra("name",characters.getName());
-            intent.putExtra("description",characters.getDescription());
-            intent.putExtra("thumbnail",thumbnail);
-            intent.putExtra("comics",comics);
-            intent.putExtra("id",characters.getId());
-            contexto.startActivity(intent);
-
-
+            if(comics.getItems().size()>0){
+                Intent intent = new Intent(contexto, HeroDetailActivity.class);
+                intent.putExtra("name",characters.getName());
+                intent.putExtra("thumbnail",thumbnail);
+                intent.putExtra("comics",comics);
+                intent.putExtra("id",characters.getId());
+                contexto.startActivity(intent);
+            } else {
+                Toast.makeText(contexto, contexto.getResources().getText(R.string.no_comics), Toast.LENGTH_LONG).show();
+            }
     }
 
     @Override

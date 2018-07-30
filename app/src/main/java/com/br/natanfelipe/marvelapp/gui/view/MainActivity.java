@@ -163,7 +163,8 @@ public class MainActivity extends AppCompatActivity implements HeroesContract.vi
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                return false;
+                adapter.getFilter().filter(query);
+                return true;
             }
 
             @Override

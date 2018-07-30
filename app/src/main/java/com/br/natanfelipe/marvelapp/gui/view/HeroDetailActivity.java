@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.br.natanfelipe.marvelapp.R;
@@ -30,7 +32,6 @@ public class HeroDetailActivity extends AppCompatActivity implements ComicsContr
     Comics comics;
     String thumbnail;
     String name;
-    String description;
     int id;
 
     private ComicAdapter adapter;
@@ -39,14 +40,14 @@ public class HeroDetailActivity extends AppCompatActivity implements ComicsContr
     @BindView(R.id.img)
     ImageView imageView;
 
+    @BindView(R.id.progressbar)
+    ProgressBar progressBar;
+
     @BindView(R.id.ct)
     CollapsingToolbarLayout collapsingToolbarLayout;
 
     @BindView(R.id.rv)
     RecyclerView recyclerView;
-
-    @BindView(R.id.tv_overview)
-    TextView tvDescription;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -84,16 +85,7 @@ public class HeroDetailActivity extends AppCompatActivity implements ComicsContr
             name = getIntent().getStringExtra("name");
             collapsingToolbarLayout.setTitle(name);
         }
-        if(intent.hasExtra("description")) {
-            description = getIntent().getStringExtra("description");
-            tvDescription.setText(description);
-        } else
-            tvDescription.setText(getResources().getString(R.string.no_description));
-        if(intent.getParcelableExtra("comics") != null){
-            for(ComicItem comicItem : comics.getItems()){
 
-            }
-        }
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -105,9 +97,6 @@ public class HeroDetailActivity extends AppCompatActivity implements ComicsContr
         presenter.getComics(this);
 
         recyclerView.setLayoutManager(new GridLayoutManager(context,2));
-
-        //recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
-
     }
 
     @Override
@@ -123,12 +112,12 @@ public class HeroDetailActivity extends AppCompatActivity implements ComicsContr
 
     @Override
     public void showProgressBar() {
-
+            progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgressBar() {
-
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override

@@ -2,4 +2,5 @@
     <string name="app_name">MarvelApp</string>
     <string name="bt_ok">Ok</string>
     <string name="no_description">That is no description about this character.</string>
+    <string name="no_comics">O personagem não apareceu em revistas</string>
 </resources>

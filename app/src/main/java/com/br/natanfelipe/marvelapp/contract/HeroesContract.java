@@ -3,7 +3,9 @@ package com.br.natanfelipe.marvelapp.contract;
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 
+import com.br.natanfelipe.marvelapp.gui.adapters.HeroAdapter;
 import com.br.natanfelipe.marvelapp.model.Characters;
 
 import java.util.List;
