@@ -2,32 +2,24 @@ package com.br.natanfelipe.marvelapp.gui.view;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.br.natanfelipe.marvelapp.R;
 import com.br.natanfelipe.marvelapp.contract.ComicsContract;
 import com.br.natanfelipe.marvelapp.gui.adapters.ComicAdapter;
-import com.br.natanfelipe.marvelapp.gui.adapters.HeroAdapter;
-import com.br.natanfelipe.marvelapp.interfaces.OnItemClickListener;
 import com.br.natanfelipe.marvelapp.model.Characters;
-import com.br.natanfelipe.marvelapp.model.ComicCharacters;
 import com.br.natanfelipe.marvelapp.model.ComicItem;
 import com.br.natanfelipe.marvelapp.model.Comics;
-import com.br.natanfelipe.marvelapp.model.Thumbnail;
 import com.br.natanfelipe.marvelapp.presenter.ComicsPresenter;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

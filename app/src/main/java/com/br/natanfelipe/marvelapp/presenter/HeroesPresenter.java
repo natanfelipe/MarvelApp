@@ -52,13 +52,21 @@ public class HeroesPresenter implements HeroesContract.presenter, ServerResponse
 
     @Override
     public boolean hasInternetConnection(Context context) {
-        ConnectivityManager cm =
-                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        try
+        {
+            ConnectivityManager conMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            if (conMgr.getActiveNetworkInfo() != null && conMgr.getActiveNetworkInfo().isAvailable() && conMgr.getActiveNetworkInfo().isConnected())
+                return true;
+            else
+                return false;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
-        return activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
+        return false;
     }
 
 
@@ -72,7 +80,7 @@ public class HeroesPresenter implements HeroesContract.presenter, ServerResponse
 
 
 
-    private class HeroesData extends AsyncTask<Void, Void, Void> {
+    public class HeroesData extends AsyncTask<Void, Void, Void> {
 
 
         @Override

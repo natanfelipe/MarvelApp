@@ -4,9 +4,6 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
 import com.br.natanfelipe.marvelapp.model.Characters;
-import com.br.natanfelipe.marvelapp.model.ComicCharacters;
-import com.br.natanfelipe.marvelapp.model.ComicItem;
-import com.br.natanfelipe.marvelapp.model.Comics;
 
 import java.util.List;
 
