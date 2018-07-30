@@ -30,7 +30,7 @@ public class RestApiKey {
     OkHttpClient okHttpClient;
 
 
-    public void configure() {
+    public ApiInterface configure() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(getOkHttpClient())
@@ -38,6 +38,8 @@ public class RestApiKey {
                 .build();
 
         apiInterface = retrofit.create(ApiInterface.class);
+
+        return apiInterface;
     }
 
     public OkHttpClient getOkHttpClient() {

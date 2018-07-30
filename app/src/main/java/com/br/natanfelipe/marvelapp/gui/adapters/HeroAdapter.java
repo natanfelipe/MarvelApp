@@ -48,7 +48,7 @@ public class HeroAdapter extends RecyclerView.Adapter<HeroAdapter.ViewHolder> im
         @BindView(R.id.cardView)
         CardView cardView;
 
-        private ViewHolder(View view) {
+        public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this,view);
         }
